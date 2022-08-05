@@ -1,7 +1,8 @@
-type Props = {};
+type Props = { content: string };
 
 const Item = (props: Props) => {
-  return <div>Item</div>;
+  const { content } = props;
+  return <li>{content}</li>;
 };
 
 export default Item;
