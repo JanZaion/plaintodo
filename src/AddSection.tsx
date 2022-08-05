@@ -10,8 +10,8 @@ const AddSection = (props: Props) => {
 
   return (
     <div>
-      <AddForm setTodo={setTodo} />
-      <AddButton setTodos={setTodos} todos={todos} todo={todo} />
+      <AddForm setTodo={setTodo} todo={todo} />
+      <AddButton setTodos={setTodos} todos={todos} todo={todo} setTodo={setTodo} />
     </div>
   );
 };
