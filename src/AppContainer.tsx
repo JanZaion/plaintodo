@@ -3,8 +3,6 @@ import AddSection from './AddSection';
 import styles from '../styles/Home.module.scss';
 import { useState } from 'react';
 
-// type ItemList = string[];
-
 const AppContainer = () => {
   const [todos, setTodos] = useState<string[]>([]);
 
