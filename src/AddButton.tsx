@@ -5,14 +5,17 @@ type Props = {
   setTodos: (todos: string[]) => void;
   todo: string;
   setTodo: (todo: string) => void;
+  checked: boolean[];
+  setChecked: (checked: boolean[]) => void;
 };
 
 const AddButton = (props: Props) => {
-  const { todos, setTodos, todo, setTodo } = props;
+  const { todos, setTodos, todo, setTodo, checked, setChecked } = props;
 
   const addItem = () => {
     setTodos([...todos, todo]);
     setTodo('');
+    setChecked([...checked, false]);
   };
 
   useEffect(() => {
@@ -25,7 +28,7 @@ const AddButton = (props: Props) => {
     document.addEventListener('keydown', listener);
 
     return () => document.removeEventListener('keydown', listener);
-  }, [todos, todo]); //eslint-disable-line
+  }, [todos, todo, checked]); //eslint-disable-line
 
   return <button onClick={() => addItem()}>Add Item</button>;
 };
