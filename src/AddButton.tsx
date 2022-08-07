@@ -1,21 +1,19 @@
 import { useEffect } from 'react';
+import { Todo } from '../types/types';
 
 type Props = {
-  todos: string[];
-  setTodos: (todos: string[]) => void;
+  todos: Todo[];
+  setTodos: (todos: Todo[]) => void;
   todo: string;
   setTodo: (todo: string) => void;
-  checked: boolean[];
-  setChecked: (checked: boolean[]) => void;
 };
 
 const AddButton = (props: Props) => {
-  const { todos, setTodos, todo, setTodo, checked, setChecked } = props;
+  const { todos, setTodos, todo, setTodo } = props;
 
   const addItem = () => {
-    setTodos([...todos, todo]);
+    setTodos([...todos, { todo, checked: false }]);
     setTodo('');
-    setChecked([...checked, false]);
   };
 
   useEffect(() => {
@@ -28,7 +26,7 @@ const AddButton = (props: Props) => {
     document.addEventListener('keydown', listener);
 
     return () => document.removeEventListener('keydown', listener);
-  }, [todos, todo, checked]); //eslint-disable-line
+  }, [todos, todo]); //eslint-disable-line
 
   return <button onClick={() => addItem()}>Add Item</button>;
 };

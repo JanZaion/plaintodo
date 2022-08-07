@@ -1,7 +1,9 @@
-type Props = { content: string; checked: boolean[]; setChecked: (checked: boolean[]) => void; i: number };
+import { Todo } from '../types/types';
+
+type Props = { content: string; todos: Todo[]; setTodos: (todos: Todo[]) => void; i: number };
 
 const Item = (props: Props) => {
-  const { content, checked, setChecked, i } = props;
+  const { content, todos, setTodos, i } = props;
 
   return (
     <li>
@@ -9,10 +11,10 @@ const Item = (props: Props) => {
       <input
         type="checkbox"
         onChange={() => {
-          checked[i] = !checked[i];
-          setChecked([...checked]);
+          todos[i].checked = !todos[i].checked;
+          setTodos([...todos]);
         }}
-        checked={checked[i]}
+        checked={todos[i].checked}
       ></input>
     </li>
   );

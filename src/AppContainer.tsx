@@ -1,28 +1,21 @@
 import Item from '../src/Item';
 import AddSection from './AddSection';
 import styles from '../styles/Home.module.scss';
+import { Todo } from '../types/types';
 import { useState } from 'react';
 
 const AppContainer = () => {
-  const [todos, setTodos] = useState<string[]>([]);
-  const [checked, setChecked] = useState<boolean[]>([]);
+  const [todos, setTodos] = useState<Todo[]>([]);
 
   return (
     <>
-      <AddSection setTodos={setTodos} todos={todos} checked={checked} setChecked={setChecked} />
+      <AddSection setTodos={setTodos} todos={todos} />
       <ul className={styles.appContainer}>
-        {todos.map((e: string, i: number) => (
-          <Item content={e} key={i} i={i} checked={checked} setChecked={setChecked} />
+        {todos.map((e: Todo, i: number) => (
+          <Item content={e.todo} key={i} i={i} setTodos={setTodos} todos={todos} />
         ))}
       </ul>
-      <button
-        onClick={() => {
-          setTodos([]);
-          setChecked([]);
-        }}
-      >
-        clear list
-      </button>
+      <button onClick={() => setTodos([])}>clear list</button>
     </>
   );
 };
