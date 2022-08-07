@@ -10,12 +10,16 @@ const AppContainer = () => {
   return (
     <>
       <AddSection setTodos={setTodos} todos={todos} />
-      <ul className={styles.appContainer}>
-        {todos.map((e: Todo, i: number) => (
-          <Item content={e.todo} key={i} i={i} setTodos={setTodos} todos={todos} />
-        ))}
-      </ul>
-      <button onClick={() => setTodos([])}>clear list</button>
+      <div className={styles.appContainer}>
+        <ul>
+          {todos.map((e: Todo, i: number) => (
+            <Item content={e.todo} key={i} i={i} setTodos={setTodos} todos={todos} />
+          ))}
+        </ul>
+      </div>
+      <div className={styles.clear}>
+        <button onClick={() => setTodos([])}>clear list</button>
+      </div>
     </>
   );
 };

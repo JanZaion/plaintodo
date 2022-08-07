@@ -15,7 +15,7 @@ const Item = (props: Props) => {
           setTodos([...todos]);
         }}
         checked={todos[i].checked}
-      ></input>
+      />
     </li>
   );
 };

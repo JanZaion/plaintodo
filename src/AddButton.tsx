@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Todo } from '../types/types';
+import styles from '../styles/Home.module.scss';
 
 type Props = {
   todos: Todo[];
@@ -28,7 +29,11 @@ const AddButton = (props: Props) => {
     return () => document.removeEventListener('keydown', listener);
   }, [todos, todo]); //eslint-disable-line
 
-  return <button onClick={() => addItem()}>Add Item</button>;
+  return (
+    <button onClick={() => addItem()} className={styles.addButton}>
+      Add Item
+    </button>
+  );
 };
 
 export default AddButton;
